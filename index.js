@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 
 const PORT = process.env.APP_PORT || 8080;
-const BACKEND = process.env.APP_PORT || 8080;
+const BACKEND = process.env.BACKEND_HOST;
 
 app.get('/api/time', function (req, res) {
 	request(`http://${BACKEND}:8080/time`, function (err, _res, body) {
