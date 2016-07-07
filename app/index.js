@@ -9,6 +9,8 @@ app.get('/api/time', function (req, res) {
 	request(`http://${BACKEND}:8080/time`, function (err, _res, body) {
 		if (!err && _res.statusCode == 200) {
 			res.send(body);
+		} else {
+			res.send(500, "Backend is not available");
 		}
 	});
 });
