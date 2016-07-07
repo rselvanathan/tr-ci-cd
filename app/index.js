@@ -1,12 +1,15 @@
-var request = require('request');
-var express = require('express');
-var app = express();
+const querystring = require('querystring');
+const request = require('request');
+const express = require('express');
+const app = express();
 
 const PORT = process.env.APP_PORT || 8080;
 const BACKEND = process.env.BACKEND_HOST;
 
-app.get('/api/time', function (req, res) {
-	request(`http://${BACKEND}:8080/time`, function (err, _res, body) {
+app.get('/api/:method', function (req, res) {
+	const qs = querystring.stringify(req.query);
+	const url = `http://${BACKEND}:8080/${req.params.method}?${qs}`;
+	request(url, function (err, _res, body) {
 		if (!err && _res.statusCode == 200) {
 			res.send(body);
 		} else {
