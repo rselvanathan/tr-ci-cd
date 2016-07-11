@@ -1,5 +1,5 @@
 frontend:
-  image: ${fe_image}
+  image: rselvanathan/unicorn-frontend:${fe_version}
   mem_limit: 100288000
   ports:
     - "80:8080"
@@ -9,7 +9,7 @@ frontend:
     BACKEND_HOST: backend
 
 backend:
-  image: ${be_image} 
+  image: rselvanathan/unicorn-backend:${be_version} 
   mem_limit: 200288000
   ports:
     - "8888:8080"
