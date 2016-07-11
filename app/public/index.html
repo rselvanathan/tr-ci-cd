@@ -4,6 +4,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<title></title>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="/public/style.css" rel="stylesheet" />
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script src="https://npmcdn.com/vue/dist/vue.js"></script>
@@ -15,9 +16,10 @@
 				{{ message.text }}
 			</div>
 			<div class="row text-center">
-				<div class="col-xs-12 time">
+				<div class="col-xs-12 time jumbotron">
 					<h3>Current time</h3>
-					<h4 class="time__header">{{ currentTime }}</h4>
+					<h1 class="huge-text">{{ currentTime }}</h4>
+					<h2>{{ currentDate }}</h4>
 					<small>Your computer's clock is off by {{ offset }} milliseconds</small>
 				</div>
 			</div>
@@ -37,12 +39,12 @@
 						<thead>
 							<tr>
 								<th>City</th>
-								<th>Offset</th>
 							</tr>
 						</thead>
 						<tr v-for="city in cities">
-							<td>{{city.name}}</td>
-							<td>{{city.offset}} hours</td>
+							<td>{{city.name}}
+								<span class="label label-primary">{{city.offset}} hours</span>
+							</td>
 						</tr>
 					</table>
 				</div>

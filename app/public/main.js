@@ -4,7 +4,8 @@ var $cities_holder = $('.cities');
 var vm = new Vue({
 	el: '#app',
 	data: {
-		currentTime: new Date(),
+		currentDate: "",
+		currentTime: "",
 		offset: 0,
 		message: false,
 		error: false,
@@ -41,8 +42,10 @@ var vm = new Vue({
 	created: function () {
 		setInterval(() => {
 			var localTime = new Date();
-			this.currentTime = moment(localTime.getTime() + this.offset).format("dddd, MMMM Do YYYY, h:mm:ss a");
-		});
+			var mom = moment(localTime.getTime() + this.offset);
+			this.currentDate = mom.format("dddd, MMMM Do YYYY");
+			this.currentTime = mom.format("H:mm:ss");
+		}, 100);
 
 		fetch("/api/time")
 			.then((r) => {
