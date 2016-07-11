@@ -9,7 +9,7 @@ frontend:
     BACKEND_HOST: backend
 
 backend:
-  image:${be_image} 
+  image: ${be_image} 
   mem_limit: 200288000
   ports:
     - "8888:8080"
