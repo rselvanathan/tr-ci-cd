@@ -2,7 +2,7 @@ frontend:
   image: ${fe_image}
   mem_limit: 100288000
   ports:
-    - "8080:8080"
+    - "80:8080"
   links:
     - backend
   environment:
