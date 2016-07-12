@@ -20,7 +20,8 @@ backend:
     spring.data.mongodb.uri: mongodb://db/unicodn
     
 db:
+  volumes: /opt/mongodata:/data/db
   image: tutum/mongodb:3.2
   mem_limit: 100288000
   environment:
-    AUTH: 'no'r
+    AUTH: 'no'
