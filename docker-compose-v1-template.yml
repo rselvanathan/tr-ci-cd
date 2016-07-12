@@ -14,7 +14,6 @@ backend:
   mem_limit: 200288000
   ports:
     - "8888:8080"
-  links:
   environment:
     spring.data.mongodb.uri: mongodb://54.229.163.232/unicodn
 
