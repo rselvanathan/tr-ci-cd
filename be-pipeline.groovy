@@ -29,5 +29,5 @@ node {
 	sh "docker rmi rselvanathan/unicorn-backend:latest"
 
 	stage 'Trigger Deploy'
-	build 'Deploy tr-ci-cd to ECS'
+	build 'Deploy-to-AWS'
 }
