@@ -1,7 +1,7 @@
 version: '2'
 services:
     frontend:
-        image: uncinimichel/unicorn-front:latest
+        image: rselvanathan/unicorn-frontend:latest
         ports:
             - "8080:8080"
         links:
@@ -9,7 +9,7 @@ services:
         environment:
             BACKEND_HOST: backend
     backend:
-        image: uncinimichel/unicorn-back:latest
+        image: rselvanathan/unicorn-backend:latest
         ports:
             - "8888:8080"
         links:
