@@ -1,22 +1,26 @@
-version: '2'
-services:
-    frontend:
-        image: rselvanathan/unicorn-frontend:latest
-        ports:
-            - "8080:8080"
-        links:
-            - backend
-        environment:
-            BACKEND_HOST: backend
-    backend:
-        image: rselvanathan/unicorn-backend:latest
-        ports:
-            - "8888:8080"
-        links:
-            - db
-        environment:
-            spring.data.mongodb.uri: mongodb://db/unicodn
-    db:
-        image: tutum/mongodb:3.2
-        environment:
-            AUTH: 'no'
+frontend:
+  image: rselvanathan/unicorn-frontend:latest
+  mem_limit: 100288000
+  ports:
+    - "80:8080"
+  links:
+    - backend
+  environment:
+    BACKEND_HOST: backend
+    BACKEND_PORT: 8080
+
+backend:
+  image: rselvanathan/unicorn-backend:latest
+  mem_limit: 200288000
+  ports:
+    - "8888:8080"
+  links:
+    - db
+  environment:
+    spring.data.mongodb.uri: mongodb://db/unicodn
+    
+db:
+  image: tutum/mongodb:3.2
+  mem_limit: 100288000
+  environment:
+    AUTH: 'no'
