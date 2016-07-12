@@ -15,4 +15,19 @@ node {
 	// Run the maven build
 	sh "${mvnHome}/bin/mvn -Dmaven.test.failure.ignore clean install"
 	step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+
+	stage 'Create Artifact'
+
+	sh "docker build -t unicorn-backend ."
+
+	stage 'Push Artifact'
+	sh "docker tag unicorn-backend rselvanathan/unicorn-backend:latest"
+	sh "docker push rselvanathan/unicorn-backend"
+
+	// Clean
+	sh "docker rmi unicorn-backend"
+	sh "docker rmi rselvanathan/unicorn-backend:latest"
+
+	stage 'Trigger Deploy'
+	build 'Deploy tr-ci-cd to ECS'
 }
