@@ -8,8 +8,7 @@ node {
 	// Mark the code build 'stage'....
 	stage 'Build'
 	// Run the npm build
-	sh "npm install"
-	sh "npm test"
+	sh "cd app; npm install; npm test;"
 
 	stage 'Create Artifact'
 
