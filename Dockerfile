@@ -8,6 +8,7 @@ RUN apt-get update /
 && apt-get -y install npm /
 && apt-get -y install node /
 && apt-get -y install nodejs-legacy /
+&& apt-get -y install gettext /
 && curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest /
 && chmod +x /usr/local/bin/ecs-cli /
 && ln -s `which nodejs` /usr/bin/node
