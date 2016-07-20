@@ -1,0 +1,60 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions":[
+	{
+		"name":"frontend",
+		"image":"rselvanathan/unicorn-frontend:${fe_version}"
+		"memory":128,
+		"portMappings": [
+			{
+				"hostPort":80,
+				"containerPort":8080
+			}
+		]
+		"environment": [
+			{
+				"name":"BACKEND_HOST",
+				"value":"backend"
+			},	
+			{
+				"name":"BACKEND_PORT",
+				"value":"8080"
+			}
+		]
+		"links":[
+			"backend"
+		]
+	},
+	{
+		"name":"backend",
+		"image":"rselvanathan/unicorn-backend:${be_version}"
+		"memory":256,
+		"portMappings": [
+			{
+				"hostPort":8888,
+				"containerPort":8080
+			}
+		]
+		"environment": [
+			{
+				"name":"spring.data.mongodb.uri",
+				"value":"mongodb://db/unicodn"
+			}
+		]
+		"links":[
+			"db"
+		]
+	},
+	{
+		"name":"db",
+		"image":"tutum/mongodb:3.2"
+		"memory":128,
+		"environment": [
+			{
+				"name":"AUTH",
+				"value":"no"
+			}
+		],
+	}
+  ]  
+}
